@@ -1,0 +1,21 @@
+---
+tools1:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.50
+leaf1:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.200.20.12
+leaf2:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.200.20.13
+spine1:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.200.20.11

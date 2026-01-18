@@ -1,0 +1,16 @@
+---
+- name: SR Linux | System path discovery
+  hosts: nokia_srlinux
+  gather_facts: false
+
+  tasks:
+    - name: System subtree getir (config)
+      nokia.srlinux.get:
+        paths:
+          - path: /system
+            datastore: running
+      register: sys_cfg
+
+    - name: System subtree yazdir
+      ansible.builtin.debug:
+        var: sys_cfg

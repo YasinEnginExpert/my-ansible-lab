@@ -1,0 +1,229 @@
+{
+  "name": "myfabric01",
+  "type": "clab",
+  "clab": {
+    "config": {
+      "prefix": "clab",
+      "mgmt": {
+        "network": "fixedips",
+        "bridge": "br-f996dbf71e1a",
+        "ipv4-subnet": "172.200.20.0/24",
+        "ipv4-gw": "172.200.20.1",
+        "external-access": true
+      }
+    }
+  },
+  "ssh-pub-keys": [],
+  "nodes": {
+    "leaf1": {
+      "index": "0",
+      "shortname": "leaf1",
+      "longname": "clab-myfabric01-leaf1",
+      "fqdn": "leaf1.myfabric01.io",
+      "group": "",
+      "labdir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf1",
+      "kind": "nokia_srlinux",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.200.20.12",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "1a:1e:00:00:00:00",
+      "labels": {
+        "ansible-group": "leaf",
+        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_srlinux",
+        "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf1",
+        "clab-node-longname": "clab-myfabric01-leaf1",
+        "clab-node-name": "leaf1",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "clab",
+        "clab-topo-file": "/home/clab/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml",
+        "containerlab": "myfabric01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "leaf2": {
+      "index": "1",
+      "shortname": "leaf2",
+      "longname": "clab-myfabric01-leaf2",
+      "fqdn": "leaf2.myfabric01.io",
+      "group": "",
+      "labdir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf2",
+      "kind": "nokia_srlinux",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.200.20.13",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "1a:41:01:00:00:00",
+      "labels": {
+        "ansible-group": "leaf",
+        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_srlinux",
+        "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf2",
+        "clab-node-longname": "clab-myfabric01-leaf2",
+        "clab-node-name": "leaf2",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "clab",
+        "clab-topo-file": "/home/clab/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml",
+        "containerlab": "myfabric01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "spine1": {
+      "index": "2",
+      "shortname": "spine1",
+      "longname": "clab-myfabric01-spine1",
+      "fqdn": "spine1.myfabric01.io",
+      "group": "",
+      "labdir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/spine1",
+      "kind": "nokia_srlinux",
+      "image": "ghcr.io/nokia/srlinux:latest",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.200.20.11",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "1a:60:02:00:00:00",
+      "labels": {
+        "ansible-group": "spine",
+        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-node-group": "",
+        "clab-node-kind": "nokia_srlinux",
+        "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/spine1",
+        "clab-node-longname": "clab-myfabric01-spine1",
+        "clab-node-name": "spine1",
+        "clab-node-type": "ixr-d2l",
+        "clab-owner": "clab",
+        "clab-topo-file": "/home/clab/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml",
+        "containerlab": "myfabric01"
+      },
+      "port-bindings": [
+      ]
+    },
+    "tools1": {
+      "index": "3",
+      "shortname": "tools1",
+      "longname": "clab-myfabric01-tools1",
+      "fqdn": "tools1.myfabric01.io",
+      "group": "",
+      "labdir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/tools1",
+      "kind": "linux",
+      "image": "alpine:3.20",
+      "mgmt-net": "",
+      "mgmt-intf": "",
+      "mgmt-ipv4-address": "172.200.20.50",
+      "mgmt-ipv4-prefix-length": 24,
+      "mgmt-ipv6-address": "",
+      "mgmt-ipv6-prefix-length": 0,
+      "mac-address": "",
+      "labels": {
+        "ansible-group": "tools",
+        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-node-group": "",
+        "clab-node-kind": "linux",
+        "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/tools1",
+        "clab-node-longname": "clab-myfabric01-tools1",
+        "clab-node-name": "tools1",
+        "clab-node-type": "",
+        "clab-owner": "clab",
+        "clab-topo-file": "/home/clab/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml",
+        "containerlab": "myfabric01"
+      },
+      "port-bindings": [
+      ]
+    }
+  },
+  "links": [
+    {
+      "endpoints": {
+        "a": {
+          "node": "spine1",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:a4:45:4b",
+          "peer": "z"
+        },
+        "z": {
+          "node": "leaf1",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:ad:0c:0f",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "spine1",
+          "interface": "e1-2",
+          "mac": "aa:c1:ab:70:e8:a3",
+          "peer": "z"
+        },
+        "z": {
+          "node": "leaf2",
+          "interface": "e1-1",
+          "mac": "aa:c1:ab:65:77:de",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "leaf1",
+          "interface": "e1-2",
+          "mac": "aa:c1:ab:3c:4c:5d",
+          "peer": "z"
+        },
+        "z": {
+          "node": "leaf2",
+          "interface": "e1-2",
+          "mac": "aa:c1:ab:03:17:21",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "tools1",
+          "interface": "e1",
+          "mac": "aa:c1:ab:76:b1:37",
+          "peer": "z"
+        },
+        "z": {
+          "node": "leaf1",
+          "interface": "e1-3",
+          "mac": "aa:c1:ab:6e:44:1b",
+          "peer": "a"
+        }
+      }
+    },
+    {
+      "endpoints": {
+        "a": {
+          "node": "tools1",
+          "interface": "e2",
+          "mac": "aa:c1:ab:ab:da:09",
+          "peer": "z"
+        },
+        "z": {
+          "node": "leaf2",
+          "interface": "e1-3",
+          "mac": "aa:c1:ab:c3:5f:cf",
+          "peer": "a"
+        }
+      }
+    }
+  ]
+}

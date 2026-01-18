@@ -1,0 +1,13 @@
+---
+- name: SR Linux | Hostname ayarla (DOGRU YOL)
+  hosts: nokia_srlinux
+  gather_facts: false
+
+  tasks:
+    - name: Hostname ayarla
+      nokia.srlinux.config:
+        replace:
+          - path: /system/name
+            value: "{{ inventory_hostname }}"
+        datastore: running
+        origin: srl_nokia

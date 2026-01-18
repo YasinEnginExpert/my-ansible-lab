@@ -1,0 +1,14 @@
+- name: SR Linux | JSON-RPC ile version cekme testi
+  hosts: nokia_srlinux
+  gather_facts: false
+  tasks:
+    - name: Version getir
+      nokia.srlinux.get:
+        paths:
+          - path: /system/information/version
+            datastore: state
+      register: out
+
+    - name: Sonucu yazdir
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} -> {{ out.result[0] }}"

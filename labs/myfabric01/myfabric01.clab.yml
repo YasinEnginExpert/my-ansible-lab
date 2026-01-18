@@ -1,0 +1,48 @@
+name: myfabric01  
+# prefix: ""      
+
+mgmt:
+  network: fixedips
+  ipv4-subnet: 172.200.20.0/24
+
+topology:
+  # defaults:
+  #   labels:
+  #     ansible-no-host-var: "true"
+
+  nodes:
+    spine1:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:latest
+      mgmt-ipv4: 172.200.20.11
+      labels:
+        ansible-group: spine
+
+    leaf1:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:latest
+      mgmt-ipv4: 172.200.20.12
+      labels:
+        ansible-group: leaf
+
+    leaf2:
+      kind: nokia_srlinux
+      image: ghcr.io/nokia/srlinux:latest
+      mgmt-ipv4: 172.200.20.13
+      labels:
+        ansible-group: leaf
+
+    tools1:
+      kind: linux
+      image: alpine:3.20
+      mgmt-ipv4: 172.200.20.50
+      labels:
+        ansible-group: tools
+
+  links:
+    - endpoints: ["spine1:e1-1", "leaf1:e1-1"]
+    - endpoints: ["spine1:e1-2", "leaf2:e1-1"]
+    - endpoints: ["leaf1:e1-2", "leaf2:e1-2"]
+    - endpoints: ["tools1:e1", "leaf1:e1-3"]
+    - endpoints: ["tools1:e2", "leaf2:e1-3"]
+    

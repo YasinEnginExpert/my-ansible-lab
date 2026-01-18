@@ -1,0 +1,13 @@
+---
+- name: Precheck | Inventory ve grup kontrolü
+  hosts: all
+  gather_facts: false
+  connection: local
+
+  tasks:
+    - name: Host bilgisi yazdir
+      ansible.builtin.debug:
+        msg:
+          - "HOST: {{ inventory_hostname }}"
+          - "GROUPLAR: {{ group_names }}"
+          - "ENV: local connection"
