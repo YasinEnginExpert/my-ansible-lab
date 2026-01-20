@@ -1,0 +1,4 @@
+routing:
+  isis:
+    instance: underlay
+    level: level-2

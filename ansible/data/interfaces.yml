@@ -1,0 +1,40 @@
+#============ Bu kod ne yapar=============#
+# Hangi cihazda, hangi interface, hangi IP
+# hangi açıklama olacak?
+#=========================================#
+
+---
+interfaces:
+  clab-myfabric01-spine1:
+    loopback:
+      name: lo0
+      ipv4: 10.255.0.1/32
+    p2p:
+      - if_name: ethernet-1/1
+        ipv4: 192.168.0.0/31
+        peer: clab-myfabric01-leaf1
+        description: spine1-to-leaf1
+      - if_name: ethernet-1/2
+        ipv4: 192.168.0.2/31
+        peer: clab-myfabric01-leaf2
+        description: spine1-to-leaf2
+
+  clab-myfabric01-leaf1:
+    loopback:
+      name: lo0
+      ipv4: 10.255.0.11/32
+    p2p:
+      - if_name: ethernet-1/1
+        ipv4: 192.168.0.1/31
+        peer: clab-myfabric01-spine1
+        description: leaf1-to-spine1
+
+  clab-myfabric01-leaf2:
+    loopback:
+      name: lo0
+      ipv4: 10.255.0.12/32
+    p2p:
+      - if_name: ethernet-1/1
+        ipv4: 192.168.0.3/31
+        peer: clab-myfabric01-spine1
+        description: leaf2-to-spine1

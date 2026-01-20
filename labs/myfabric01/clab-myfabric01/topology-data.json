@@ -6,7 +6,7 @@
       "prefix": "clab",
       "mgmt": {
         "network": "fixedips",
-        "bridge": "br-f996dbf71e1a",
+        "bridge": "br-206ce9a186b4",
         "ipv4-subnet": "172.200.20.0/24",
         "ipv4-gw": "172.200.20.1",
         "external-access": true
@@ -30,10 +30,10 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "",
       "mgmt-ipv6-prefix-length": 0,
-      "mac-address": "1a:1e:00:00:00:00",
+      "mac-address": "1a:66:00:00:00:00",
       "labels": {
         "ansible-group": "leaf",
-        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-mgmt-net-bridge": "br-206ce9a186b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_srlinux",
         "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf1",
@@ -62,10 +62,10 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "",
       "mgmt-ipv6-prefix-length": 0,
-      "mac-address": "1a:41:01:00:00:00",
+      "mac-address": "1a:51:01:00:00:00",
       "labels": {
         "ansible-group": "leaf",
-        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-mgmt-net-bridge": "br-206ce9a186b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_srlinux",
         "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/leaf2",
@@ -94,10 +94,10 @@
       "mgmt-ipv4-prefix-length": 24,
       "mgmt-ipv6-address": "",
       "mgmt-ipv6-prefix-length": 0,
-      "mac-address": "1a:60:02:00:00:00",
+      "mac-address": "1a:3b:02:00:00:00",
       "labels": {
         "ansible-group": "spine",
-        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-mgmt-net-bridge": "br-206ce9a186b4",
         "clab-node-group": "",
         "clab-node-kind": "nokia_srlinux",
         "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/spine1",
@@ -129,7 +129,7 @@
       "mac-address": "",
       "labels": {
         "ansible-group": "tools",
-        "clab-mgmt-net-bridge": "br-f996dbf71e1a",
+        "clab-mgmt-net-bridge": "br-206ce9a186b4",
         "clab-node-group": "",
         "clab-node-kind": "linux",
         "clab-node-lab-dir": "/home/clab/my-ansible-lab/labs/myfabric01/clab-myfabric01/tools1",
@@ -150,13 +150,13 @@
         "a": {
           "node": "spine1",
           "interface": "e1-1",
-          "mac": "aa:c1:ab:a4:45:4b",
+          "mac": "aa:c1:ab:99:aa:d1",
           "peer": "z"
         },
         "z": {
           "node": "leaf1",
           "interface": "e1-1",
-          "mac": "aa:c1:ab:ad:0c:0f",
+          "mac": "aa:c1:ab:38:db:3a",
           "peer": "a"
         }
       }
@@ -166,13 +166,13 @@
         "a": {
           "node": "spine1",
           "interface": "e1-2",
-          "mac": "aa:c1:ab:70:e8:a3",
+          "mac": "aa:c1:ab:39:7c:d9",
           "peer": "z"
         },
         "z": {
           "node": "leaf2",
           "interface": "e1-1",
-          "mac": "aa:c1:ab:65:77:de",
+          "mac": "aa:c1:ab:b9:df:e1",
           "peer": "a"
         }
       }
@@ -182,13 +182,13 @@
         "a": {
           "node": "leaf1",
           "interface": "e1-2",
-          "mac": "aa:c1:ab:3c:4c:5d",
+          "mac": "aa:c1:ab:d4:03:3d",
           "peer": "z"
         },
         "z": {
           "node": "leaf2",
           "interface": "e1-2",
-          "mac": "aa:c1:ab:03:17:21",
+          "mac": "aa:c1:ab:d9:41:c0",
           "peer": "a"
         }
       }
@@ -198,13 +198,13 @@
         "a": {
           "node": "tools1",
           "interface": "e1",
-          "mac": "aa:c1:ab:76:b1:37",
+          "mac": "aa:c1:ab:5b:1b:6c",
           "peer": "z"
         },
         "z": {
           "node": "leaf1",
           "interface": "e1-3",
-          "mac": "aa:c1:ab:6e:44:1b",
+          "mac": "aa:c1:ab:99:a7:0f",
           "peer": "a"
         }
       }
@@ -214,13 +214,13 @@
         "a": {
           "node": "tools1",
           "interface": "e2",
-          "mac": "aa:c1:ab:ab:da:09",
+          "mac": "aa:c1:ab:ca:0e:93",
           "peer": "z"
         },
         "z": {
           "node": "leaf2",
           "interface": "e1-3",
-          "mac": "aa:c1:ab:c3:5f:cf",
+          "mac": "aa:c1:ab:04:ae:f5",
           "peer": "a"
         }
       }

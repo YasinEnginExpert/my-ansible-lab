@@ -1,13 +1,16 @@
+#============ Bu kod ne yapar=============#
+# Play bookları sırayla çağırır.
+# Sadece orkestrasyon amacıyla kullanılır.
+#=========================================#
 ---
-- name: Precheck | Inventory ve grup kontrolü
-  hosts: all
-  gather_facts: false
-  connection: local
+- import_playbook: interfaces.yml
+  tags:
+    - interfaces
 
-  tasks:
-    - name: Host bilgisi yazdir
-      ansible.builtin.debug:
-        msg:
-          - "HOST: {{ inventory_hostname }}"
-          - "GROUPLAR: {{ group_names }}"
-          - "ENV: local connection"
+- import_playbook: routing.yml
+  tags:
+    - routing
+
+- import_playbook: verify.yml
+  tags:
+    - verify

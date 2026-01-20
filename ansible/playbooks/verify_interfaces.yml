@@ -1,0 +1,55 @@
+#============ Bu kod ne yapar=============#
+# Cihaza gerçekten interface gitmiş mi?
+# Loopback IP doğru mu?
+# P2P IP’ler doğru mu?
+# Yanlışsa fail etsin, sessiz geçmesin
+#=========================================#
+
+---
+- name: Verify | Interface state kontrolu
+  hosts: nokia_srlinux
+  gather_facts: false
+
+  vars_files:
+    - ../data/interfaces.yml
+
+  tasks:
+    - name: Loopback state oku
+      when:
+        - interfaces[inventory_hostname].loopback is defined
+      nokia.srlinux.get:
+        paths:
+          - /interface[name={{ interfaces[inventory_hostname].loopback.name }}]
+      register: loopback_state
+
+    - name: Loopback interface var mi?
+      when:
+        - interfaces[inventory_hostname].loopback is defined
+      assert:
+        that:
+          - loopback_state.result | length > 0
+        fail_msg: "Loopback interface bulunamadi"
+        success_msg: "Loopback interface mevcut"
+
+    - name: P2P interface state kontrolu
+      when:
+        - interfaces[inventory_hostname].p2p is defined
+      loop: "{{ interfaces[inventory_hostname].p2p }}"
+      loop_control:
+        label: "{{ item.if_name }}"
+      nokia.srlinux.get:
+        paths:
+          - /interface[name={{ item.if_name }}]
+      register: p2p_state
+
+    - name: P2P interface’ler mevcut mu?
+      when:
+        - interfaces[inventory_hostname].p2p is defined
+      assert:
+        that:
+          - item.result | length > 0
+        fail_msg: "P2P interface eksik: {{ item.item.if_name }}"
+        success_msg: "P2P interface OK: {{ item.item.if_name }}"
+      loop: "{{ p2p_state.results }}"
+      loop_control:
+        label: "{{ item.item.if_name }}"
