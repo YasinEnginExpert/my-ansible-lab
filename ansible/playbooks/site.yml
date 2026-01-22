@@ -1,7 +1,8 @@
-#============ Bu kod ne yapar=============#
-# Play bookları sırayla çağırır.
-# Sadece orkestrasyon amacıyla kullanılır.
-#=========================================#
+#=============================================#
+# Main Orchestration Playbook
+# Calls all playbooks in the correct sequence
+# Use tags to run specific workflows
+#=============================================#
 ---
 - import_playbook: interfaces.yml
   tags:

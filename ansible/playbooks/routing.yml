@@ -21,7 +21,7 @@
     - ../data/routing.yml
 
   tasks:
-    - name: ISIS instance olustur
+    - name: Create IS-IS instance
       nokia.srlinux.config:
         replace:
           - path: /network-instance[name=default]/protocols/isis/instance[name={{ routing.isis.instance }}]
@@ -30,7 +30,7 @@
               level-capability: "{{ routing.isis.level }}"
         origin: srl_nokia
 
-    - name: Loopback ISIS passive
+    - name: Configure loopback as passive IS-IS interface
       when:
         - interfaces[inventory_hostname].loopback is defined
       nokia.srlinux.config:

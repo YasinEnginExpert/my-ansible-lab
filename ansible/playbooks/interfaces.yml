@@ -16,7 +16,7 @@
     - ../data/interfaces.yml
 
   tasks:
-    - name: Loopback interface konfigürasyonu
+    - name: Configure loopback interface
       when:
         - interfaces[inventory_hostname].loopback is defined
       nokia.srlinux.config:
@@ -28,7 +28,7 @@
             value: {}
         origin: srl_nokia
 
-    - name: P2P interface konfigürasyonu
+    - name: Configure P2P interfaces
       when:
         - interfaces[inventory_hostname].p2p is defined
       loop: "{{ interfaces[inventory_hostname].p2p }}"

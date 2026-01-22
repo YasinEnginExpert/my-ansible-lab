@@ -6,7 +6,7 @@
 #=========================================#
 
 ---
-- name: Verify | Interface state kontrolu
+- name: Verify | Interface state validation
   hosts: nokia_srlinux
   gather_facts: false
 
@@ -14,7 +14,7 @@
     - ../data/interfaces.yml
 
   tasks:
-    - name: Loopback state oku
+    - name: Read loopback interface state
       when:
         - interfaces[inventory_hostname].loopback is defined
       nokia.srlinux.get:
@@ -22,16 +22,16 @@
           - /interface[name={{ interfaces[inventory_hostname].loopback.name }}]
       register: loopback_state
 
-    - name: Loopback interface var mi?
+    - name: Assert loopback interface exists
       when:
         - interfaces[inventory_hostname].loopback is defined
       assert:
         that:
           - loopback_state.result | length > 0
-        fail_msg: "Loopback interface bulunamadi"
-        success_msg: "Loopback interface mevcut"
+        fail_msg: "Loopback interface not found"
+        success_msg: "Loopback interface exists"
 
-    - name: P2P interface state kontrolu
+    - name: Read P2P interface state
       when:
         - interfaces[inventory_hostname].p2p is defined
       loop: "{{ interfaces[inventory_hostname].p2p }}"
@@ -48,7 +48,7 @@
       assert:
         that:
           - item.result | length > 0
-        fail_msg: "P2P interface eksik: {{ item.item.if_name }}"
+        fail_msg: "P2P interface missing: {{ item.item.if_name }}"
         success_msg: "P2P interface OK: {{ item.item.if_name }}"
       loop: "{{ p2p_state.results }}"
       loop_control:
