@@ -1,0 +1,27 @@
+---
+- name: Nginx paketini yükle
+  apk:
+    name: nginx
+    state: present
+    update_cache: yes
+
+- name: Web root dizinini oluştur
+  file:
+    path: /usr/share/nginx/html
+    state: directory
+
+- name: Varsayılan site konfigürasyonunu kopyala
+  copy:
+    src: nginx.conf
+    dest: /etc/nginx/http.d/default.conf
+
+- name: index.html şablonunu yükle
+  template:
+    src: index.html.j2
+    dest: /usr/share/nginx/html/index.html
+
+- name: Nginx'i başlat (arka planda)
+  command: nginx
+  register: nginx_start
+  changed_when: nginx_start.rc == 0
+  failed_when: false # Already running hatasını yoksaymak için basit bir çözüm

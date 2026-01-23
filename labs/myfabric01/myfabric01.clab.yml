@@ -31,17 +31,13 @@ topology:
     hosts:
       kind: linux
       labels:
-        ansible-group: hosts
+        ansible-group: webservers
 
   nodes:
     # ================= SPINES (AS 65000) =================
     spine1:
       group: spines
       mgmt-ipv4: 172.200.20.11
-      kind: nokia_srlinux
-      labels:
-        ansible-group: spine
-        asn: "65000"
 
     spine2:
       group: spines
@@ -52,9 +48,7 @@ topology:
       group: leaves
       mgmt-ipv4: 172.200.20.21
       labels:
-        ansible-group: leaf
         asn: "65001"
-      kind: nokia_srlinux
 
     leaf2:
       group: leaves
@@ -73,49 +67,37 @@ topology:
       group: hosts
       mgmt-ipv4: 172.200.20.101
       labels:
-        ansible-group: hosts
         vlan: "10"
-      kind: linux
 
     pc2:
       group: hosts
       mgmt-ipv4: 172.200.20.102
       labels:
-        ansible-group: hosts
         vlan: "20"
-      kind: linux
 
     pc3:
       group: hosts
       mgmt-ipv4: 172.200.20.103
       labels:
-        ansible-group: hosts
         vlan: "10"
-      kind: linux
 
     pc4:
       group: hosts
       mgmt-ipv4: 172.200.20.104
       labels:
-        ansible-group: hosts
         vlan: "20"
-      kind: linux
 
     pc5:
       group: hosts
       mgmt-ipv4: 172.200.20.105
       labels:
-        ansible-group: hosts
         vlan: "10"
-      kind: linux
 
     pc6:
       group: hosts
       mgmt-ipv4: 172.200.20.106
       labels:
-        ansible-group: hosts
         vlan: "20"
-      kind: linux
 
   links:
     # ==========================================================

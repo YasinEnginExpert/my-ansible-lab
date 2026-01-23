@@ -28,79 +28,80 @@ This lab provides a hands-on environment for network engineers to learn and prac
 
 ## Architecture
 
-The lab implements a simple Spine-Leaf network topology:
+## Architecture
 
-```
-            ┌──────────┐
-            │  spine1  │
-            └─────┬────┘
-                  │
-         ┌────────┼────────┐
-         │        │        │
-    ┌────┴───┐    │   ┌────┴───┐
-    │ leaf1  │────┼───│ leaf2  │
-    └────┬───┘    │   └────┬───┘
-         │        │        │
-      [tools1] ───┘        │
-         └─────────────────┘
+The lab implements a Spine-Leaf network topology with 2 Spines and 3 Leaves, connecting 6 PC endpoints.
+
+```mermaid
+graph TD
+    subgraph Spines [Spine Layer]
+        S1[spine1]
+        S2[spine2]
+    end
+
+    subgraph Leaves [Leaf Layer]
+        L1[leaf1]
+        L2[leaf2]
+        L3[leaf3]
+    end
+
+    subgraph Hosts [Servers]
+        PC1[pc1]
+        PC2[pc2]
+        PC3[pc3]
+        PC4[pc4]
+        PC5[pc5]
+        PC6[pc6]
+    end
+
+    %% Connections
+    S1 --- L1 & L2 & L3
+    S2 --- L1 & L2 & L3
+
+    L1 --- PC1 & PC2
+    L2 --- PC3 & PC4
+    L3 --- PC5 & PC6
+
+    classDef spine fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef leaf fill:#bbf,stroke:#333,stroke-width:2px;
+    classDef host fill:#dfd,stroke:#333,stroke-width:1px;
+    
+    class S1,S2 spine;
+    class L1,L2,L3 leaf;
+    class PC1,PC2,PC3,PC4,PC5,PC6 host;
 ```
 
 **Design considerations:**
-- **Spine layer**: Aggregation and backbone routing
-- **Leaf layer**: Server/endpoint connectivity
-- **IS-IS underlay**: Layer 3 connectivity between devices
-- **Point-to-point links**: /31 addressing for efficiency
-- **Loopback interfaces**: Router-ID and overlay endpoint identification
+- **Spine Layer**: 2 x Nokia SR Linux (Aggregators)
+- **Leaf Layer**: 3 x Nokia SR Linux (Access)
+- **Hosts**: 6 x Alpine Linux (Web Servers)
+- **Underlay**: IS-IS routing with IPv4 Point-to-Point links (/31)
+- **Overlay**: Prepared for BGP EVPN (Future)
 
 ## Technology Stack
 
-| Component | Technology | Purpose |
-|-----------|------------|---------|
-| **Network OS** | Nokia SR Linux | Modern, cloud-native network operating system |
-| **Containerization** | Containerlab | Lightweight network topology deployment |
-| **Automation** | Ansible 2.9+ | Configuration management and orchestration |
-| **API Protocol** | JSON-RPC (HttpAPI) | Model-driven device communication |
-| **Data Models** | YANG | Structured configuration and state management |
-
-**Ansible Collections Used:**
-- `ansible.netcommon` - Common network automation utilities
-- `nokia.srlinux` - SR Linux-specific modules and HttpAPI plugin
+| Component | Technology | Role |
+|-----------|------------|------|
+| **Network OS** | Nokia SR Linux | Spine/Leaf Switches |
+| **Servers** | Alpine Linux + Nginx | Web Endpoints |
+| **Automation** | Ansible 2.9+ | Config Management |
+| **Topology** | Containerlab | Infrastructure Orchestrator |
 
 ## Containerlab Topology
 
-The topology is defined in [`labs/myfabric01/myfabric01.clab.yml`](file:///d:/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml).
+The topology definition at [`labs/myfabric01/myfabric01.clab.yml`](file:///d:/my-ansible-lab/labs/myfabric01/myfabric01.clab.yml) creates:
 
-### Key Components
+**Nodes:**
 
-**Management Network:**
-```yaml
-mgmt:
-  network: fixedips
-  ipv4-subnet: 172.200.20.0/24
-```
-- Uses a dedicated management network for out-of-band access
-- Fixed IP addressing for predictable connectivity
-- Ansible inventory automatically generated from this configuration
+| Name | Role | Ansible Group | Mgmt IP |
+|------|------|---------------|---------|
+| `spine1-2` | Backbone | `spine` | 172.200.20.11-12 |
+| `leaf1-3` | TOR Switch | `leaf` | 172.200.20.21-23 |
+| `pc1-6` | Web Server | `webservers` | 172.200.20.101-106 |
 
-**Node Definitions:**
-
-| Node | Type | Management IP | Role | Ansible Group |
-|------|------|---------------|------|---------------|
-| spine1 | nokia_srlinux | 172.200.20.11 | Spine router | spine |
-| leaf1 | nokia_srlinux | 172.200.20.12 | Leaf switch | leaf |
-| leaf2 | nokia_srlinux | 172.200.20.13 | Leaf switch | leaf |
-| tools1 | linux (alpine) | 172.200.20.50 | Test endpoint | tools |
-
-**Link Topology:**
-
-The `links` section defines data plane connectivity:
-- `spine1:e1-1 ↔ leaf1:e1-1` - Spine to leaf1 uplink
-- `spine1:e1-2 ↔ leaf2:e1-1` - Spine to leaf2 uplink
-- `leaf1:e1-2 ↔ leaf2:e1-2` - Leaf peer link
-- `tools1:e1 ↔ leaf1:e1-3` - Test endpoint to leaf1
-- `tools1:e2 ↔ leaf2:e1-3` - Test endpoint to leaf2
-
-**Ansible Integration:**
+**Connectivity:**
+- **Spines <-> Leaves**: Full Mesh eBGP style links
+- **Leaves <-> PCs**: VLAN access ports (VLAN 10/20)
 
 Containerlab automatically generates an Ansible inventory at:
 ```
@@ -206,11 +207,14 @@ ansible-inventory -i ../labs/myfabric01/clab-myfabric01/ansible-inventory.yml --
 @all:
   |--@spine:
   |  |--clab-myfabric01-spine1
+  |  |--clab-myfabric01-spine2
   |--@leaf:
   |  |--clab-myfabric01-leaf1
   |  |--clab-myfabric01-leaf2
-  |--@tools:
-  |  |--clab-myfabric01-tools1
+  |  |--clab-myfabric01-leaf3
+  |--@hosts:
+  |  |--clab-myfabric01-pc1
+  |  |--...
 ```
 
 ### Step 5: Test SR Linux Connectivity
