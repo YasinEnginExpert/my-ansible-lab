@@ -7,8 +7,18 @@ all:
   children:
     linux:
       hosts:
-        clab-myfabric01-tools1:
-          ansible_host: 172.200.20.50
+        clab-myfabric01-pc1:
+          ansible_host: 172.200.20.101
+        clab-myfabric01-pc2:
+          ansible_host: 172.200.20.102
+        clab-myfabric01-pc3:
+          ansible_host: 172.200.20.103
+        clab-myfabric01-pc4:
+          ansible_host: 172.200.20.104
+        clab-myfabric01-pc5:
+          ansible_host: 172.200.20.105
+        clab-myfabric01-pc6:
+          ansible_host: 172.200.20.106
     nokia_srlinux:
       vars:
         ansible_network_os: nokia.srlinux.srlinux
@@ -19,22 +29,40 @@ all:
         ansible_password: NokiaSrl1!
       hosts:
         clab-myfabric01-leaf1:
-          ansible_host: 172.200.20.12
+          ansible_host: 172.200.20.21
         clab-myfabric01-leaf2:
-          ansible_host: 172.200.20.13
+          ansible_host: 172.200.20.22
+        clab-myfabric01-leaf3:
+          ansible_host: 172.200.20.23
         clab-myfabric01-spine1:
           ansible_host: 172.200.20.11
+        clab-myfabric01-spine2:
+          ansible_host: 172.200.20.12
+    hosts:
+      hosts:
+        clab-myfabric01-pc1:
+          ansible_host: 172.200.20.101
+        clab-myfabric01-pc2:
+          ansible_host: 172.200.20.102
+        clab-myfabric01-pc3:
+          ansible_host: 172.200.20.103
+        clab-myfabric01-pc4:
+          ansible_host: 172.200.20.104
+        clab-myfabric01-pc5:
+          ansible_host: 172.200.20.105
+        clab-myfabric01-pc6:
+          ansible_host: 172.200.20.106
     leaf:
       hosts:
         clab-myfabric01-leaf1:
-          ansible_host: 172.200.20.12
+          ansible_host: 172.200.20.21
         clab-myfabric01-leaf2:
-          ansible_host: 172.200.20.13
+          ansible_host: 172.200.20.22
+        clab-myfabric01-leaf3:
+          ansible_host: 172.200.20.23
     spine:
       hosts:
         clab-myfabric01-spine1:
           ansible_host: 172.200.20.11
-    tools:
-      hosts:
-        clab-myfabric01-tools1:
-          ansible_host: 172.200.20.50
+        clab-myfabric01-spine2:
+          ansible_host: 172.200.20.12

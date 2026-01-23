@@ -1,0 +1,6 @@
+- name: Configure nginx on containerlab web nodes
+  hosts: webservers
+  become: true
+
+  roles:
+    - nginx

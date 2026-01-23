@@ -6,34 +6,118 @@
   "nodeAnnotations": [
     {
       "id": "spine1",
-      "interfacePattern": "e1-{n}",
       "position": {
-        "x": 147,
-        "y": -7
-      }
+        "x": 140,
+        "y": -120
+      },
+      "interfacePattern": "e1-{n}",
+      "icon": "pe",
+      "iconColor": "#c6e91c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "spine2",
+      "position": {
+        "x": 260,
+        "y": -120
+      },
+      "interfacePattern": "e1-{n}",
+      "icon": "pe",
+      "iconColor": "#c6e91c",
+      "iconCornerRadius": 40
     },
     {
       "id": "leaf1",
-      "interfacePattern": "e1-{n}",
       "position": {
-        "x": 77,
-        "y": 77
-      }
+        "x": 80,
+        "y": 0
+      },
+      "interfacePattern": "e1-{n}",
+      "icon": "pe",
+      "iconColor": "#1ce9ab",
+      "iconCornerRadius": 40
     },
     {
       "id": "leaf2",
-      "interfacePattern": "e1-{n}",
       "position": {
-        "x": 35,
-        "y": 7
-      }
+        "x": 200,
+        "y": 0
+      },
+      "interfacePattern": "e1-{n}",
+      "icon": "pe",
+      "iconColor": "#1ce9ab",
+      "iconCornerRadius": 40
     },
     {
-      "id": "tools1",
+      "id": "leaf3",
       "position": {
-        "x": -77,
-        "y": 49
-      }
+        "x": 320,
+        "y": 0
+      },
+      "interfacePattern": "e1-{n}",
+      "icon": "pe",
+      "iconColor": "#1ce9ab",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc1",
+      "position": {
+        "x": 40,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc2",
+      "position": {
+        "x": 120,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc3",
+      "position": {
+        "x": 160,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc4",
+      "position": {
+        "x": 240,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc5",
+      "position": {
+        "x": 280,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
+    },
+    {
+      "id": "pc6",
+      "position": {
+        "x": 360,
+        "y": 120
+      },
+      "icon": "client",
+      "iconColor": "#e91c1c",
+      "iconCornerRadius": 40
     }
   ],
   "edgeAnnotations": [],

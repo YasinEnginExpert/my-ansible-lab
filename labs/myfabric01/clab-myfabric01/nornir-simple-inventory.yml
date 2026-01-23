@@ -1,21 +1,56 @@
 ---
-tools1:
+pc1:
     username: 
     password: 
     platform: linux
-    hostname: 172.200.20.50
+    hostname: 172.200.20.101
+pc2:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.102
+pc3:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.103
+pc4:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.104
+pc5:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.105
+pc6:
+    username: 
+    password: 
+    platform: linux
+    hostname: 172.200.20.106
 leaf1:
     username: admin
     password: NokiaSrl1!
     platform: nokia_srlinux
-    hostname: 172.200.20.12
+    hostname: 172.200.20.21
 leaf2:
     username: admin
     password: NokiaSrl1!
     platform: nokia_srlinux
-    hostname: 172.200.20.13
+    hostname: 172.200.20.22
+leaf3:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.200.20.23
 spine1:
     username: admin
     password: NokiaSrl1!
     platform: nokia_srlinux
     hostname: 172.200.20.11
+spine2:
+    username: admin
+    password: NokiaSrl1!
+    platform: nokia_srlinux
+    hostname: 172.200.20.12
