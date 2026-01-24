@@ -1,4 +1,4 @@
 routing:
   isis:
-    instance: underlay
-    level: level-2
+    instance: "UNDERLAY"
+    level: "level-2"
