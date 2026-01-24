@@ -1,17 +1,12 @@
-#=============================================#
-# Main Orchestration Playbook
-# Calls all playbooks in the correct sequence
-# Use tags to run specific workflows
-#=============================================#
 ---
-- import_playbook: interfaces.yml
-  tags:
-    - interfaces
-
-- import_playbook: routing.yml
-  tags:
-    - routing
-
-- import_playbook: verify.yml
-  tags:
-    - verify
+- name: SR Linux - Full Run
+  hosts: srl
+  gather_facts: false
+  roles:
+    - srl_common
+    - srl_system
+    - srl_interfaces
+    - srl_lag
+    - srl_vlan
+    - srl_underlay_isis
+    - srl_verify

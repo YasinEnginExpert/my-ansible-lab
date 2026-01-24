@@ -1,4 +1,0 @@
-routing:
-  isis:
-    instance: "UNDERLAY"
-    level: "level-2"

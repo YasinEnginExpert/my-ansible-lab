@@ -1,0 +1,17 @@
+LAB=myfabric01
+
+install:
+	ansible-galaxy collection install -r requirements.yml
+
+deploy:
+	cd ../labs/$(LAB) && containerlab deploy -t $(LAB).clab.yml
+	bash scripts/inv_sync.sh $(LAB)
+
+destroy:
+	cd ../labs/$(LAB) && containerlab destroy -t $(LAB).clab.yml
+
+site:
+	ansible-playbook -i inventories/$(LAB)/hosts.yml playbooks/site.yml
+
+verify:
+	ansible-playbook -i inventories/$(LAB)/hosts.yml playbooks/verify.yml

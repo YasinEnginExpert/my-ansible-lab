@@ -1,0 +1,17 @@
+---
+interfaces:
+  clab-myfabric01-spine1:
+    - path: /interface[name=ethernet-1/1]
+      value:
+        admin-state: enable
+    - path: /interface[name=ethernet-1/1]/subinterface[index=0]
+      value:
+        admin-state: enable
+        ipv4:
+          address:
+            - ip-prefix: 10.0.0.0/31
+
+  clab-myfabric01-leaf1:
+    - path: /interface[name=ethernet-1/49]
+      value:
+        admin-state: enable

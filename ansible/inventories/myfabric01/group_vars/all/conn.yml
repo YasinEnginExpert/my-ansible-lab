@@ -1,0 +1,11 @@
+---
+ansible_connection: ansible.netcommon.httpapi
+ansible_network_os: nokia.srlinux.srlinux
+
+# SR Linux nokia.srlinux collection JSON-RPC kullanır. :contentReference[oaicite:6]{index=6}
+srl:
+  jsonrpc_port: 80        # lab’ında farklıysa değiştir
+  username: admin
+  password: admin
+  tls: false
+  validate_certs: false

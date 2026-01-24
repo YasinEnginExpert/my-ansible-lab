@@ -1,0 +1,6 @@
+---
+- name: Deploy containerlab + sync inventory
+  hosts: localhost
+  gather_facts: False
+  roles:
+    - clab

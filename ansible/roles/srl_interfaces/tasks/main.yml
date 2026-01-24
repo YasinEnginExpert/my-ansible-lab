@@ -1,0 +1,9 @@
+---
+- name: Load fabric interfaces data
+  ansible.builtin.include_vars:
+    file: "{{ fabric_data_dir }}/interfaces.yml"
+    name: fabric_interfaces
+
+- name: Apply interface config (per host)
+  nokia.srlinux.config:
+    update: "{{ fabric_interfaces.interfaces[inventory_hostname] | default([]) }}"
